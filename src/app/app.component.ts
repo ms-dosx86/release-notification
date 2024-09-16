@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { ReleaseNotificationModalComponent } from "../../projects/release-notification";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [RouterOutlet, RouterLink, ReleaseNotificationModalComponent],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  title = 'release-notification';
+  throwError() {
+    throw new Error(
+      "TypeError: Failed to fetch dynamically imported module: https://example.com/chunk-4XF37HCG.js",
+    );
+  }
+
+  reload() {
+    location.reload();
+  }
 }

@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/release-notification",
+  "lib": {
+    "entryFile": "public-api.ts"
+  },
+  "allowedNonPeerDependencies": ["ng-error-handlers"]
+}

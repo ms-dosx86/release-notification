@@ -1,0 +1,25 @@
+.release-notification-modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(4px);
+  height: 100vh;
+  width: 100vw;
+
+  &__backdrop {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+  }
+
+  &__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
