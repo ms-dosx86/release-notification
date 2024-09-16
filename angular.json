@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "release-notification": {
+    "release-notification-local": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/release-notification",
+            "outputPath": "dist/release-notification-local",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "release-notification:build:production"
+              "buildTarget": "release-notification-local:build:production"
             },
             "development": {
-              "buildTarget": "release-notification:build:development"
+              "buildTarget": "release-notification-local:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,6 +94,44 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "release-notification": {
+      "projectType": "library",
+      "root": "projects/release-notification",
+      "sourceRoot": "projects/release-notification/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/release-notification/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/release-notification/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/release-notification/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/release-notification/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
